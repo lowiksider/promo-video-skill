@@ -212,7 +212,7 @@
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      const CLOSED = window.__logoClosed || { rotation: 6, x: 7.96, y: 0.84 };
+      const CLOSED = window.__logoClosed || { rotation: 10, x: 44.316, y: 7.814 };
 
       // ---- Scène 1 : hook ----
       tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.7);
@@ -222,7 +222,7 @@
       // ---- Scène 2 : logo — fan-opening (empilées → pose icône) ----
       tl.from("#s2-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 5.4);
       tl.from("#s2-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.55, ease: "power2.out" }, 5.5);
-      tl.from(".s2logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.8, stagger: 0.12, ease: "back.out(1.5)" }, 5.55);
+      tl.from(".s2logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "490 935", duration: 0.8, stagger: 0.12, ease: "back.out(1.5)" }, 5.55);
       tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 6.2);
       tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.5);
 
@@ -251,7 +251,7 @@
       // ---- Scène 8 : CTA — logo fan-opening (rappel) + badges ----
       tl.from("#s8-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 32.3);
       tl.from("#s8-logo-mount",{ scale: 0.85, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 32.45);
-      tl.from(".s8logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.65, stagger: 0.1, ease: "back.out(1.4)" }, 32.5);
+      tl.from(".s8logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "490 935", duration: 0.65, stagger: 0.1, ease: "back.out(1.4)" }, 32.5);
       tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 32.9);
       tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 33.2);
 
