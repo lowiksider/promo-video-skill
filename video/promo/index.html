@@ -40,8 +40,8 @@
         background: #F4EEE5;
       }
       #island-mask {
-        position: absolute; left: 445px; top: 333px; width: 216px; height: 55px;
-        background: #0A0A0B; border-radius: 27px;
+        position: absolute; left: 410px; top: 332px; width: 282px; height: 56px;
+        background: #0A0A0B; border-radius: 28px;
       }
 
       /* ===================== TEXT ===================== */
@@ -91,12 +91,12 @@
     </style>
   </head>
   <body>
-    <!-- Durée = 38s, calée sur la voix off (voix 2, Eleven v3). Signature coupée. -->
+    <!-- Durée = 37.6s, calée sur la voix off (voix 2 / A, Eleven v3). -->
     <div id="root" data-composition-id="main"
-         data-start="0" data-duration="38" data-width="1080" data-height="1920">
+         data-start="0" data-duration="37.6" data-width="1080" data-height="1920">
 
-      <!-- ============ SCÈNE 1 — HOOK (0–6.4s) ============ -->
-      <div id="s1-bg" class="scene clip" data-start="0" data-duration="6.4" data-track-index="0"
+      <!-- ============ SCÈNE 1 — HOOK (0–5.9s) ============ -->
+      <div id="s1-bg" class="scene clip" data-start="0" data-duration="5.9" data-track-index="0"
            style="background: var(--teal); z-index:1;">
         <div class="center-col">
           <div id="s1-l1" class="serif hook-line">59 UE.</div>
@@ -105,8 +105,8 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 2 — LOGO / BASCULE (5.9–9.4s) ============ -->
-      <div id="s2-bg" class="scene clip" data-start="5.9" data-duration="3.5" data-track-index="1"
+      <!-- ============ SCÈNE 2 — LOGO / BASCULE (5.4–8.7s) ============ -->
+      <div id="s2-bg" class="scene clip" data-start="5.4" data-duration="3.3" data-track-index="1"
            style="background: var(--cream); z-index:2;">
         <div class="center-col">
           <div id="s2-logo-mount" class="logo-img"></div>
@@ -115,30 +115,30 @@
         </div>
       </div>
 
-      <!-- ============ BLOC DÉMO (phone + clip continu) 8.9–26.3s ============ -->
-      <div id="demo-bg" class="scene clip" data-start="8.9" data-duration="17.4" data-track-index="2"
+      <!-- ============ BLOC DÉMO (phone + clip continu) 8.45–25.85s ============ -->
+      <div id="demo-bg" class="scene clip" data-start="8.45" data-duration="17.4" data-track-index="2"
            style="background: var(--cream); z-index:3;"></div>
-      <div id="phone-bezel" class="clip" data-start="9.0" data-duration="17.1" data-track-index="3" style="z-index:4;"></div>
-      <video id="vid" class="app-video clip" data-start="9.0" data-duration="17.1" data-media-start="0"
+      <div id="phone-bezel" class="clip" data-start="8.55" data-duration="17.05" data-track-index="3" style="z-index:4;"></div>
+      <video id="vid" class="app-video clip" data-start="8.55" data-duration="17.05" data-media-start="0"
              data-track-index="5" src="./assets/demo_dense.mp4" muted playsinline style="z-index:5;"></video>
-      <div id="island-mask" class="clip" data-start="9.0" data-duration="17.1" data-track-index="6" style="z-index:6;"></div>
+      <div id="island-mask" class="clip" data-start="8.55" data-duration="17.05" data-track-index="6" style="z-index:6;"></div>
 
       <!-- légendes (lower-third), une par ligne de voix off -->
-      <div id="capA" class="caption clip" data-start="9.12" data-duration="7.7" data-track-index="7" style="z-index:7;">
+      <div id="capA" class="caption clip" data-start="8.65" data-duration="7.4" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Tout le programme dans ta poche. Choisis ton chapitre, lance ta session.</p>
       </div>
-      <div id="capB" class="caption clip" data-start="17.52" data-duration="3.5" data-track-index="7" style="z-index:7;">
+      <div id="capB" class="caption clip" data-start="17.05" data-duration="3.4" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Des flashcards intelligentes — et tu t'auto-évalues d'un geste.</p>
       </div>
-      <div id="capC" class="caption clip" data-start="21.71" data-duration="3.9" data-track-index="7" style="z-index:7;">
+      <div id="capC" class="caption clip" data-start="21.24" data-duration="3.9" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Réviser au bon moment, grâce à la répétition espacée.</p>
       </div>
 
-      <!-- ============ SCÈNE 6 — CATALOGUE (26.0–32.6s) ============ -->
-      <div id="s6-bg" class="scene clip" data-start="26.0" data-duration="6.6" data-track-index="0"
+      <!-- ============ SCÈNE 6 — CATALOGUE (25.7–32.3s) ============ -->
+      <div id="s6-bg" class="scene clip" data-start="25.7" data-duration="6.6" data-track-index="0"
            style="background: var(--cream); z-index:8;">
         <div class="center-col">
           <div id="s6-title" class="serif cat-title">Tout pour réviser</div>
@@ -175,8 +175,8 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 8 — CTA (32.6–38s) ============ -->
-      <div id="s8-bg" class="scene clip" data-start="32.6" data-duration="5.4" data-track-index="1"
+      <!-- ============ SCÈNE 8 — CTA (32.3–37.6s) ============ -->
+      <div id="s8-bg" class="scene clip" data-start="32.3" data-duration="5.3" data-track-index="1"
            style="background: var(--cream); z-index:10;">
         <div class="center-col">
           <div id="s8-logo-mount" class="logo-img small"></div>
@@ -201,8 +201,8 @@
         </div>
       </div>
 
-      <!-- ============ PISTE AUDIO MASTER (voix off + musique duckée) ============ -->
-      <audio id="master-audio" class="clip" data-start="0" data-duration="38" data-track-index="11"
+      <!-- ============ PISTE AUDIO MASTER ============ -->
+      <audio id="master-audio" class="clip" data-start="0" data-duration="37.6" data-track-index="11"
              src="./assets/master_audio.mp3" data-volume="1"></audio>
 
     </div>
@@ -212,49 +212,48 @@
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
-      const CLOSED = window.__logoClosed || { rotation: 10, x: 44.316, y: 7.814 };
+      const CLOSED = window.__logoClosed || { rotation: 6, x: 7.96, y: 0.84 };
 
       // ---- Scène 1 : hook ----
       tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.7);
-      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.8);
-      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 3.3);
+      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.7);
+      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 3.0);
 
-      // ---- Scène 2 : logo — fan-opening (empilées → pose P1) ----
-      tl.from("#s2-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 5.9);
-      tl.from("#s2-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.55, ease: "power2.out" }, 6.0);
-      // chaque carte part de la pose « avant » (empilées) → s'ouvre vers sa pose P1
-      tl.from(".s2logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.8, stagger: 0.12, ease: "back.out(1.5)" }, 6.05);
-      tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 6.7);
-      tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 7.0);
+      // ---- Scène 2 : logo — fan-opening (empilées → pose icône) ----
+      tl.from("#s2-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 5.4);
+      tl.from("#s2-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.55, ease: "power2.out" }, 5.5);
+      tl.from(".s2logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.8, stagger: 0.12, ease: "back.out(1.5)" }, 5.55);
+      tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 6.2);
+      tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.5);
 
       // ---- Bloc démo : téléphone + vidéo + île entrent ENSEMBLE ----
-      tl.from("#demo-bg", { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 8.9);
+      tl.from("#demo-bg", { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 8.45);
       tl.from(["#phone-bezel", "#vid", "#island-mask"],
-              { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 9.0);
+              { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 8.55);
 
       function caption(id, tin, tout) {
         tl.from(id, { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, tin);
         tl.to(id,   { opacity: 0, duration: 0.4, ease: "power1.in" }, tout);
       }
-      caption("#capA", 9.12, 16.8);
-      caption("#capB", 17.52, 20.9);
-      caption("#capC", 21.71, 25.4);
+      caption("#capA", 8.65, 16.1);
+      caption("#capB", 17.05, 20.5);
+      caption("#capC", 21.24, 25.0);
 
       // ---- Sortie douce du téléphone avant le catalogue ----
       tl.to(["#phone-bezel", "#vid", "#island-mask"],
-            { y: 90, opacity: 0, duration: 0.7, ease: "power2.inOut" }, 25.3);
+            { y: 90, opacity: 0, duration: 0.7, ease: "power2.inOut" }, 24.85);
 
       // ---- Scène 6 : catalogue ----
-      tl.from("#s6-bg",    { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 26.0);
-      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 26.3);
-      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 26.7);
+      tl.from("#s6-bg",    { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 25.7);
+      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 26.0);
+      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 26.4);
 
       // ---- Scène 8 : CTA — logo fan-opening (rappel) + badges ----
-      tl.from("#s8-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 32.6);
-      tl.from("#s8-logo-mount",{ scale: 0.85, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 32.75);
-      tl.from(".s8logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.65, stagger: 0.1, ease: "back.out(1.4)" }, 32.8);
-      tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 33.3);
-      tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 33.6);
+      tl.from("#s8-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 32.3);
+      tl.from("#s8-logo-mount",{ scale: 0.85, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 32.45);
+      tl.from(".s8logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.65, stagger: 0.1, ease: "back.out(1.4)" }, 32.5);
+      tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 32.9);
+      tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 33.2);
 
       window.__timelines["main"] = tl;
     </script>
