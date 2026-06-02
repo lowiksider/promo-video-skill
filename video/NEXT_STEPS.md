@@ -16,11 +16,11 @@ GSAP vendorisé, **les polices Lora**, le setup script.
 
 Ce qui est à re-fournir (volontairement non poussé sur le fork public) :
 - 📱 **La vidéo** → re-uploader, puis : `cp <upload> video/promo/assets/demo_raw.mp4`
-- 🎨 **Le logo SVG** → re-coller, puis régénérer les PNG :
-  ```
-  rsvg-convert -w 1024 -h 1024 video/assets/logo_open.svg -o video/promo/assets/logo.png
-  cp video/promo/assets/logo.png video/promo/assets/logo_cta.png
-  ```
+- 🎨 **Le logo** → ✅ **fait** (02/06) : la compo référence directement `video/promo/assets/logo.svg`
+  (pose éventail ouverte, statique). Chrome rend le SVG tel quel → **plus de rasterisation PNG**,
+  rsvg-convert n'est plus nécessaire pour le logo. Source animée gardée dans `video/assets/logo_open.svg`.
+  > ⚠️ Ces fichiers sont gitignorés (`*.svg`, `video/assets/`, `video/promo/assets/`) : ils ne
+  > survivent PAS à un nouveau conteneur. À re-coller/re-déposer après un rebuild d'environnement.
 - 🔑 **La clé** → variable d'env `ELEVENLABS_API_KEY` (réglages d'environnement, pas le chat).
 
 Le **setup script** (`scripts/web-setup.sh`) réinstalle ffmpeg, librsvg et le Chrome de rendu.
@@ -50,6 +50,9 @@ npm run render -- --output renders/promo_v1.mp4
 ### À affiner après le 1ᵉʳ rendu (inspect)
 - Position/échelle du mockup iPhone et cadrage de la vidéo (object-fit).
 - Timing des scènes 3-5 à caler sur la voix off réelle.
-- Animation « éventail qui s'ouvre » du logo (v1 = scale/fade ; viser un fan-open par carte).
+- Animation « éventail qui s'ouvre » du logo : v1.1 = entrée GSAP pile serrée+pivotée → déploiement
+  (back.out), logo en SVG externe. Pour un **vrai fan-open carte par carte**, il faudrait inliner le
+  SVG dans `index.html` et animer chaque carte — mais cela publierait l'art du logo (le SVG est
+  gitignoré exprès). À décider avec Lowik (privacy vs. finition de l'anim).
 - Vérifier débordements texte (`npm run check` → inspect).
 - Ajouter la voix off (audio) + musique de fond.

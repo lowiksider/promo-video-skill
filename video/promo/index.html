@@ -106,7 +106,7 @@
       <div id="s2-bg" class="scene clip" data-start="3.8" data-duration="3.4" data-track-index="1"
            style="background: var(--cream); z-index:2;">
         <div class="center-col">
-          <img id="s2-logo" class="logo-img" src="./assets/logo.png" crossorigin="anonymous" alt="logo" />
+          <img id="s2-logo" class="logo-img" src="./assets/logo.svg" crossorigin="anonymous" alt="logo Révision Manip Radio" />
           <div id="s2-word" class="serif wordmark" style="margin-top:30px;">Révision Manip Radio</div>
           <div id="s2-tag" class="tagline">Et si réviser devenait enfin facile&nbsp;?</div>
         </div>
@@ -167,7 +167,7 @@
       <div id="s8-bg" class="scene clip" data-start="30.8" data-duration="3.2" data-track-index="2"
            style="background: var(--cream); z-index:10;">
         <div class="center-col">
-          <img id="s8-logo" class="logo-img small" src="./assets/logo_cta.png" crossorigin="anonymous" alt="logo" />
+          <img id="s8-logo" class="logo-img small" src="./assets/logo.svg" crossorigin="anonymous" alt="logo Révision Manip Radio" />
           <div id="s8-name" class="serif cta-name">Révision Manip Radio</div>
           <div id="s8-sub" class="cta-sub">Bientôt disponible</div>
           <div class="stores">
@@ -190,7 +190,9 @@
 
       // ---- Scène 2 : logo (crossfade depuis hook) ----
       tl.from("#s2-bg",   { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 3.8);
-      tl.from("#s2-logo", { scale: 0.7, rotation: -6, opacity: 0, duration: 0.8, ease: "back.out(1.5)" }, 4.1);
+      // entrée « éventail qui s'ouvre » : la pile démarre serrée et pivotée,
+      // puis se déploie avec un léger dépassement (back.out) vers la pose fanned.
+      tl.from("#s2-logo", { scale: 0.55, rotation: -12, transformOrigin: "50% 85%", opacity: 0, duration: 0.9, ease: "back.out(1.7)" }, 4.05);
       tl.from("#s2-word", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 4.5);
       tl.from("#s2-tag",  { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 4.8);
 

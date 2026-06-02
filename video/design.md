@@ -46,4 +46,15 @@ fond crème + vert pétrole profond + titres en serif. Crédibilité médicale, 
 - Ne pas trahir l'aesthetic crème/serif : les scènes animées doivent s'y fondre.
 
 ## Logo
-- ⏳ En attente : le logo n'est pas encore arrivé (upload à refaire). Le déposer → `video/assets/logo.png`.
+- ✅ Reçu (02/06/2026). Identité : **3 cartes en éventail** (bleu pétrole, vert, ocre) sur la
+  carte avant le **symbole radioactivité** + lignes de texte — cohérent avec l'icône de l'app.
+- Couleurs des cartes : bleu `#1B4F60→#0A2932`, vert `#3D8260→#1F4F37`, ocre `#B89643→#7E5F1F`,
+  trèfle/texte crème `#FBF5E2`. (Mêmes familles que la charte.)
+- Deux fichiers (gitignorés, privés — non poussés sur le fork public) :
+  - `video/promo/assets/logo.svg` — **pose éventail ouverte, statique** : c'est celui que la
+    compo référence (rendu déterministe). Chrome rend le SVG directement → **plus besoin de
+    rasteriser** (rsvg-convert n'est plus requis pour le logo).
+  - `video/assets/logo_open.svg` — **loader animé** original (SMIL, éventail s'ouvre/se ferme),
+    gardé comme source de vérité de la marque.
+- Dans la compo : le logo apparaît en scène 2 avec une entrée « éventail qui s'ouvre »
+  (GSAP : pile serrée + pivotée → déploiement avec dépassement), et en petit en scène 8 (CTA).
