@@ -59,8 +59,12 @@
       .wordmark { font-size: 78px; color: var(--teal); font-weight: 700; letter-spacing: -1px; }
       .tagline { font-size: 40px; color: var(--muted); margin-top: 18px; }
 
-      .caption { position: absolute; left: 110px; top: 1600px; width: 860px; text-align: center; }
-      .caption .accent { width: 64px; height: 6px; border-radius: 3px; background: var(--gold); margin: 0 auto 26px; }
+      .caption {
+        position: absolute; left: 90px; top: 1576px; width: 900px; text-align: center;
+        background: rgba(244,238,229,0.94); border-radius: 36px; padding: 36px 48px;
+        box-shadow: 0 18px 44px rgba(20,21,21,0.14);
+      }
+      .caption .accent { width: 64px; height: 6px; border-radius: 3px; background: var(--gold); margin: 0 auto 24px; }
       .caption p { font-size: 50px; line-height: 1.22; color: var(--teal); font-weight: 600; }
 
       .cat-title { font-size: 64px; color: var(--teal); font-weight: 700; margin-bottom: 60px; }
@@ -78,10 +82,9 @@
       .chip .lbl { font-size: 46px; color: var(--ink); font-weight: 600; }
 
       .sig-line { font-size: 84px; color: var(--cream); font-weight: 600; line-height: 1.12; }
-      .sig-line .em { color: var(--gold); }
+      .sig-line .em { color: #E3C271; }  /* doré éclairci → contraste ≥3:1 sur le pétrole */
 
       .cta-name { font-size: 70px; color: var(--teal); font-weight: 700; margin-top: 34px; }
-      .cta-sub { font-size: 40px; color: var(--muted); margin-top: 14px; }
       .stores { display: flex; gap: 28px; margin-top: 54px; }
       .store { background: var(--teal); color: var(--cream); border-radius: 22px; padding: 26px 38px; font-size: 34px; font-weight: 600; }
       .logo-img { width: 360px; height: 360px; object-fit: contain; }
@@ -89,11 +92,12 @@
     </style>
   </head>
   <body>
+    <!-- Durée = 42s, calée sur la voix off réelle (Augustin, FR). -->
     <div id="root" data-composition-id="main"
-         data-start="0" data-duration="34" data-width="1080" data-height="1920">
+         data-start="0" data-duration="42" data-width="1080" data-height="1920">
 
-      <!-- ============ SCÈNE 1 — HOOK (0–4.4s) ============ -->
-      <div id="s1-bg" class="scene clip" data-start="0" data-duration="4.4" data-track-index="0"
+      <!-- ============ SCÈNE 1 — HOOK (0–5.4s) ============ -->
+      <div id="s1-bg" class="scene clip" data-start="0" data-duration="5.4" data-track-index="0"
            style="background: var(--teal); z-index:1;">
         <div class="center-col">
           <div id="s1-l1" class="serif hook-line">59 UE.</div>
@@ -102,8 +106,8 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 2 — LOGO / BASCULE (3.8–7.2s) ============ -->
-      <div id="s2-bg" class="scene clip" data-start="3.8" data-duration="3.4" data-track-index="1"
+      <!-- ============ SCÈNE 2 — LOGO / BASCULE (4.9–8.1s) ============ -->
+      <div id="s2-bg" class="scene clip" data-start="4.9" data-duration="3.2" data-track-index="1"
            style="background: var(--cream); z-index:2;">
         <div class="center-col">
           <img id="s2-logo" class="logo-img" src="./assets/logo.svg" crossorigin="anonymous" alt="logo Révision Manip Radio" />
@@ -112,37 +116,33 @@
         </div>
       </div>
 
-      <!-- ============ BLOC DÉMO (phone + vidéo) 6.8–25.2s ============ -->
-      <div id="demo-bg" class="scene clip" data-start="6.8" data-duration="18.4" data-track-index="2"
+      <!-- ============ BLOC DÉMO (phone + clip continu) 7.5–27.2s ============ -->
+      <div id="demo-bg" class="scene clip" data-start="7.5" data-duration="19.7" data-track-index="2"
            style="background: var(--cream); z-index:3;"></div>
-      <div id="phone-bezel" class="clip" data-start="6.9" data-duration="18.3" data-track-index="3" style="z-index:4;"></div>
+      <div id="phone-bezel" class="clip" data-start="7.6" data-duration="19.5" data-track-index="3" style="z-index:4;"></div>
 
-      <!-- vidéos consécutives (clip continu découpé) — muted playsinline, hors div timée -->
-      <video id="vidA" class="app-video clip" data-start="7.0" data-duration="7.0" data-media-start="0"
-             data-track-index="5" src="./assets/demo_raw.mp4" muted playsinline style="z-index:5;"></video>
-      <video id="vidB" class="app-video clip" data-start="14.0" data-duration="7.0" data-media-start="7"
-             data-track-index="5" src="./assets/demo_raw.mp4" muted playsinline style="z-index:5;"></video>
-      <video id="vidC" class="app-video clip" data-start="21.0" data-duration="4.2" data-media-start="14"
+      <!-- clip continu (un seul élément, muted playsinline) ; l'audio est la piste master séparée -->
+      <video id="vid" class="app-video clip" data-start="7.6" data-duration="19.4" data-media-start="0"
              data-track-index="5" src="./assets/demo_raw.mp4" muted playsinline style="z-index:5;"></video>
 
-      <div id="phone-notch" class="clip" data-start="6.9" data-duration="18.3" data-track-index="6" style="z-index:6;"></div>
+      <div id="phone-notch" class="clip" data-start="7.6" data-duration="19.5" data-track-index="6" style="z-index:6;"></div>
 
-      <!-- légendes (lower-third) -->
-      <div id="capA" class="caption clip" data-start="7.4" data-duration="6.0" data-track-index="7" style="z-index:7;">
+      <!-- légendes (lower-third), une par ligne de voix off -->
+      <div id="capA" class="caption clip" data-start="7.76" data-duration="8.2" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Tout le programme dans ta poche. Choisis ton chapitre, lance ta session.</p>
       </div>
-      <div id="capB" class="caption clip" data-start="14.2" data-duration="6.0" data-track-index="7" style="z-index:7;">
+      <div id="capB" class="caption clip" data-start="16.83" data-duration="4.7" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Des flashcards intelligentes — et tu t'auto-évalues d'un geste.</p>
       </div>
-      <div id="capC" class="caption clip" data-start="21.2" data-duration="3.6" data-track-index="7" style="z-index:7;">
+      <div id="capC" class="caption clip" data-start="22.01" data-duration="4.9" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Réviser au bon moment, grâce à la répétition espacée.</p>
       </div>
 
-      <!-- ============ SCÈNE 6 — CATALOGUE (24.8–29.2s) ============ -->
-      <div id="s6-bg" class="scene clip" data-start="24.8" data-duration="4.4" data-track-index="0"
+      <!-- ============ SCÈNE 6 — CATALOGUE (27.0–34.3s) ============ -->
+      <div id="s6-bg" class="scene clip" data-start="27.0" data-duration="7.3" data-track-index="0"
            style="background: var(--cream); z-index:8;">
         <div class="center-col">
           <div id="s6-title" class="serif cat-title">Tout pour réviser</div>
@@ -154,8 +154,8 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 7 — SIGNATURE (28.8–31.4s) ============ -->
-      <div id="s7-bg" class="scene clip" data-start="28.8" data-duration="2.6" data-track-index="1"
+      <!-- ============ SCÈNE 7 — SIGNATURE (33.9–37.3s) ============ -->
+      <div id="s7-bg" class="scene clip" data-start="33.9" data-duration="3.4" data-track-index="1"
            style="background: var(--teal); z-index:9;">
         <div class="center-col">
           <div id="s7-l1" class="serif sig-line">Pensé par un <span class="em">manip radio</span>,</div>
@@ -163,13 +163,12 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 8 — CTA (30.8–34s) ============ -->
-      <div id="s8-bg" class="scene clip" data-start="30.8" data-duration="3.2" data-track-index="2"
+      <!-- ============ SCÈNE 8 — CTA (37.0–42s) ============ -->
+      <div id="s8-bg" class="scene clip" data-start="37.0" data-duration="5.0" data-track-index="2"
            style="background: var(--cream); z-index:10;">
         <div class="center-col">
-          <img id="s8-logo" class="logo-img small" src="./assets/logo.svg" crossorigin="anonymous" alt="logo Révision Manip Radio" />
+          <img id="s8-logo" class="logo-img small" src="./assets/logo.svg?ctx=cta" crossorigin="anonymous" alt="logo Révision Manip Radio" />
           <div id="s8-name" class="serif cta-name">Révision Manip Radio</div>
-          <div id="s8-sub" class="cta-sub">Bientôt disponible</div>
           <div class="stores">
             <div class="store s8-store"> App Store</div>
             <div class="store s8-store">▶ Play Store</div>
@@ -177,55 +176,57 @@
         </div>
       </div>
 
+      <!-- ============ PISTE AUDIO MASTER (voix off + musique duckée) ============ -->
+      <audio id="master-audio" class="clip" data-start="0" data-duration="42" data-track-index="11"
+             src="./assets/master_audio.mp3" data-volume="1"></audio>
+
     </div>
 
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
 
-      // ---- Scène 1 : hook ----
-      tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.2);
-      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.7);
-      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 1.5);
+      // ---- Scène 1 : hook (voix : 0.6s) ----
+      tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.6);
+      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.4);
+      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 2.6);
 
-      // ---- Scène 2 : logo (crossfade depuis hook) ----
-      tl.from("#s2-bg",   { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 3.8);
-      // entrée « éventail qui s'ouvre » : la pile démarre serrée et pivotée,
-      // puis se déploie avec un léger dépassement (back.out) vers la pose fanned.
-      tl.from("#s2-logo", { scale: 0.55, rotation: -12, transformOrigin: "50% 85%", opacity: 0, duration: 0.9, ease: "back.out(1.7)" }, 4.05);
-      tl.from("#s2-word", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 4.5);
-      tl.from("#s2-tag",  { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 4.8);
+      // ---- Scène 2 : logo (voix : 4.94s « Et si… ») ----
+      tl.from("#s2-bg",   { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 4.9);
+      // entrée « éventail qui s'ouvre » : pile serrée + pivotée → déploiement avec dépassement
+      tl.from("#s2-logo", { scale: 0.55, rotation: -12, transformOrigin: "50% 85%", opacity: 0, duration: 0.9, ease: "back.out(1.7)" }, 5.0);
+      tl.from("#s2-word", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 5.4);
+      tl.from("#s2-tag",  { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 5.7);
 
-      // ---- Bloc démo : le téléphone monte (crossfade depuis logo) ----
-      tl.from("#demo-bg",     { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 6.8);
-      tl.from("#phone-bezel", { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 6.9);
-      tl.from("#phone-notch", { opacity: 0, duration: 0.4 }, 7.1);
+      // ---- Bloc démo : le téléphone monte (voix : 7.76s) ----
+      tl.from("#demo-bg",     { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 7.5);
+      tl.from("#phone-bezel", { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 7.6);
+      tl.from("#phone-notch", { opacity: 0, duration: 0.4 }, 7.9);
 
       // légendes : fondu d'entrée + fondu de sortie (style sous-titres)
       function caption(id, tin, tout) {
         tl.from(id, { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, tin);
         tl.to(id,   { opacity: 0, duration: 0.4, ease: "power1.in" }, tout);
       }
-      caption("#capA", 7.4, 13.0);
-      caption("#capB", 14.2, 19.8);
-      caption("#capC", 21.2, 24.4);
+      caption("#capA", 7.76, 15.7);
+      caption("#capB", 16.83, 21.1);
+      caption("#capC", 22.01, 26.5);
 
-      // ---- Scène 6 : catalogue ----
-      tl.from("#s6-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 24.8);
-      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 25.1);
-      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.18 }, 25.4);
+      // ---- Scène 6 : catalogue (voix : 27.16s) ----
+      tl.from("#s6-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 27.0);
+      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 27.3);
+      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 27.7);
 
-      // ---- Scène 7 : signature ----
-      tl.from("#s7-bg", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 28.8);
-      tl.from("#s7-l1", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 29.1);
-      tl.from("#s7-l2", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 29.4);
+      // ---- Scène 7 : signature (voix : 34.14s) ----
+      tl.from("#s7-bg", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 33.9);
+      tl.from("#s7-l1", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.2);
+      tl.from("#s7-l2", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.6);
 
-      // ---- Scène 8 : CTA (seule scène autorisée au fade final) ----
-      tl.from("#s8-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 30.8);
-      tl.from("#s8-logo",  { scale: 0.8, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 31.0);
-      tl.from("#s8-name",  { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 31.3);
-      tl.from("#s8-sub",   { y: 20, opacity: 0, duration: 0.5, ease: "power2.out" }, 31.5);
-      tl.from(".s8-store", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.12 }, 31.8);
+      // ---- Scène 8 : CTA (voix : 37.10s) ----
+      tl.from("#s8-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 37.0);
+      tl.from("#s8-logo",  { scale: 0.8, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 37.2);
+      tl.from("#s8-name",  { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 37.6);
+      tl.from(".s8-store", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 38.0);
 
       window.__timelines["main"] = tl;
     </script>

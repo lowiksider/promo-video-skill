@@ -25,34 +25,39 @@ Ce qui est à re-fournir (volontairement non poussé sur le fork public) :
 
 Le **setup script** (`scripts/web-setup.sh`) réinstalle ffmpeg, librsvg et le Chrome de rendu.
 
-## 🎙️ 3. Voix off (une fois le réseau OK)
-- Générer 2-3 voix FR d'audition (snippet) via l'API ElevenLabs.
-- Choisir, générer la voix off complète (texte figé dans `SCRIPT.md`).
-- Synchroniser : ajuster les `data-start`/`data-duration` des scènes sur le timing réel de la voix.
+## 🎙️ 3. Voix off — ✅ FAIT (02/06)
+- Voix choisie : **Augustin** (`kKgyAHjGAbeWHCNd7qoC`, FR, jeune, conversationnel).
+- 8 segments générés via ElevenLabs (`eleven_multilingual_v2`), émotions par scène,
+  mesurés à l'`ffprobe` → **la voix est devenue l'horloge maître** (durée finale **42 s**).
+- Piste master `assets/master_audio.mp3` = voix + musique `motivational-day` **duckée**
+  (sidechaincompress) + `loudnorm` broadcast (mean -17 dB / max -5 dB).
+- Régénérer si besoin : `node /tmp/gen_vo.mjs` puis le mix ffmpeg (voir historique), ou
+  adapter `skills/promo-video/scripts/generate-voiceover.ts`.
+- ⚠️ Audio gitignoré (`*.mp3`) : à régénérer après un rebuild de conteneur.
 
-## 🎬 4. Compo : preview → check → render
+## 🎬 4. Compo : preview → check → render — ✅ rendue
 ```
 cd video/promo
-npm run check      # lint + validate + inspect (Chrome)
-npm run dev        # preview (run_in_background)
-npm run render -- --output renders/promo_v1.mp4
+npm run check      # lint 0/0 ; validate 0 erreur (warnings de contraste = faux positifs)
+npm run render -- --output renders/promo_v1.mp4   # 1080×1920, 42s, ~4.7 Mo
 ```
+Rendu v1 validé visuellement (frames OK sur les 8 scènes, démo non figée, audio synchro).
 
 ## 📝 État de la composition v1 (`video/promo/index.html`)
-8 scènes, portrait 1080×1920, ~34 s, charte réelle (crème/pétrole/Lora) :
+8 scènes, portrait 1080×1920, **42 s** (calée sur la voix), charte réelle (crème/pétrole/Lora) :
 1. Hook « 59 UE… » (fond pétrole)
 2. Logo + « Et si réviser devenait enfin facile ? »
-3-5. **Bloc démo** : mockup iPhone + ta vidéo (continu 0→18 s) + légendes
+3-5. **Bloc démo** : mockup iPhone + ta vidéo (clip continu unique ~19 s) + légendes
 6. Catalogue (flashcards / QCM / fiches de synthèse)
 7. Signature « Pensé par un manip radio… » (fond pétrole)
 8. CTA logo + stores
 
-### À affiner après le 1ᵉʳ rendu (inspect)
-- Position/échelle du mockup iPhone et cadrage de la vidéo (object-fit).
-- Timing des scènes 3-5 à caler sur la voix off réelle.
-- Animation « éventail qui s'ouvre » du logo : v1.1 = entrée GSAP pile serrée+pivotée → déploiement
-  (back.out), logo en SVG externe. Pour un **vrai fan-open carte par carte**, il faudrait inliner le
-  SVG dans `index.html` et animer chaque carte — mais cela publierait l'art du logo (le SVG est
-  gitignoré exprès). À décider avec Lowik (privacy vs. finition de l'anim).
-- Vérifier débordements texte (`npm run check` → inspect).
-- Ajouter la voix off (audio) + musique de fond.
+### Pistes de polish v2 (optionnel)
+- **Re-encoder la vidéo source** avec des keyframes denses pour fiabiliser le seek (le rendu v1
+  est OK mais HyperFrames a averti — `ffmpeg -i demo_raw.mp4 -c:v libx264 -r 30 -g 30
+  -keyint_min 30 -movflags +faststart -an demo_dense.mp4`).
+- **Vrai fan-open carte par carte** du logo : nécessite d'inliner le SVG dans `index.html`
+  → publierait l'art (SVG gitignoré exprès). À décider (privacy vs. finition).
+- Caler le cadrage `object-position` de la vidéo si l'app change (status bar 11:50 visible).
+- Affiner le ducking musique / ajouter un léger whoosh sur les bascules de scène.
+- Sous-titres burn-in optionnels (accessibilité / autoplay muet sur les réseaux).
