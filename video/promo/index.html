@@ -47,14 +47,18 @@
         border-radius: 52px; object-fit: cover; object-position: top center;
         background: #F4EEE5;
       }
-      #phone-notch {
-        position: absolute; left: 485px; top: 336px; width: 110px; height: 30px;
-        background: #000; border-radius: 16px;
+      /* Pastille noire qui recouvre la Dynamic Island de la footage → masque le
+         point rouge d'enregistrement (l'île reste, l'indicateur disparaît). */
+      #island-mask {
+        position: absolute; left: 402px; top: 325px; width: 276px; height: 58px;
+        background: #0A0A0B; border-radius: 30px;
       }
 
       /* ===================== TEXT ===================== */
-      .hook-line { font-size: 96px; line-height: 1.04; color: var(--cream); font-weight: 600; }
-      .hook-line.dim { color: rgba(247,245,237,0.62); font-size: 70px; margin-top: 26px; }
+      .hook-line { font-size: 100px; line-height: 1.04; color: var(--cream); font-weight: 600; }
+      .hook-line.dim { color: rgba(247,245,237,0.62); font-size: 66px; }
+      #s1-l1 { margin-bottom: 8px; }
+      #s1-l2 { margin-bottom: 64px; }   /* aère les 3 lignes (on a la place) */
 
       .wordmark { font-size: 78px; color: var(--teal); font-weight: 700; letter-spacing: -1px; }
       .tagline { font-size: 40px; color: var(--muted); margin-top: 18px; }
@@ -67,32 +71,43 @@
       .caption .accent { width: 64px; height: 6px; border-radius: 3px; background: var(--gold); margin: 0 auto 24px; }
       .caption p { font-size: 50px; line-height: 1.22; color: var(--teal); font-weight: 600; }
 
-      .cat-title { font-size: 64px; color: var(--teal); font-weight: 700; margin-bottom: 60px; }
-      .chips { display: flex; flex-direction: column; gap: 30px; width: 760px; }
+      .cat-title { font-size: 64px; color: var(--teal); font-weight: 700; margin-bottom: 56px; }
+      .chips { display: flex; flex-direction: column; gap: 28px; width: 800px; }
       .chip {
-        display: flex; align-items: center; gap: 28px;
+        display: flex; align-items: center; gap: 30px;
         background: #fff; border: 2px solid var(--greige); border-radius: 30px;
-        padding: 34px 40px; box-shadow: 0 14px 30px rgba(20,21,21,0.06);
+        padding: 30px 38px; box-shadow: 0 14px 30px rgba(20,21,21,0.06);
       }
       .chip .ico {
-        width: 78px; height: 78px; border-radius: 20px; flex: 0 0 auto;
-        display: flex; align-items: center; justify-content: center; font-size: 40px;
-        background: var(--teal); color: var(--cream);
+        width: 92px; height: 92px; border-radius: 24px; flex: 0 0 auto;
+        display: flex; align-items: center; justify-content: center;
+        background: var(--teal);
       }
-      .chip .lbl { font-size: 46px; color: var(--ink); font-weight: 600; }
+      .chip .ico svg { width: 50px; height: 50px; }
+      .chip .txt { display: flex; flex-direction: column; align-items: flex-start; }
+      .chip .t { font-size: 44px; color: var(--ink); font-weight: 700; line-height: 1.05; }
+      .chip .s { font-size: 29px; color: var(--muted); font-weight: 500; margin-top: 6px; }
 
-      .sig-line { font-size: 84px; color: var(--cream); font-weight: 600; line-height: 1.12; }
+      .sig-line { font-size: 66px; color: var(--cream); font-weight: 600; line-height: 1.18; }
       .sig-line .em { color: #E3C271; }  /* doré éclairci → contraste ≥3:1 sur le pétrole */
 
-      .cta-name { font-size: 70px; color: var(--teal); font-weight: 700; margin-top: 34px; }
-      .stores { display: flex; gap: 28px; margin-top: 54px; }
-      .store { background: var(--teal); color: var(--cream); border-radius: 22px; padding: 26px 38px; font-size: 34px; font-weight: 600; }
-      .logo-img { width: 360px; height: 360px; object-fit: contain; }
-      .logo-img.small { width: 240px; height: 240px; }
+      .cta-name { font-size: 70px; color: var(--teal); font-weight: 700; margin-top: 30px; }
+      .stores { display: flex; gap: 26px; margin-top: 52px; }
+      .store {
+        display: flex; align-items: center; gap: 16px;
+        background: #0B0B0C; border-radius: 18px; padding: 18px 28px;
+      }
+      .store-logo { width: 38px; height: 38px; flex: 0 0 auto; }
+      .store-txt { display: flex; flex-direction: column; align-items: flex-start; line-height: 1.05; text-align: left; }
+      .store-txt .t1 { font-size: 21px; color: #fff; opacity: 0.92; font-weight: 500; }
+      .store-txt .t2 { font-size: 34px; color: #fff; font-weight: 600; letter-spacing: 0.2px; }
+
+      .logo-img { width: 360px; height: 360px; }
+      .logo-img.small { width: 250px; height: 250px; }
     </style>
   </head>
   <body>
-    <!-- Durée = 42s, calée sur la voix off réelle (Augustin, FR). -->
+    <!-- Durée = 42s (validation visuelle ; recalée sur la voix off au render final). -->
     <div id="root" data-composition-id="main"
          data-start="0" data-duration="42" data-width="1080" data-height="1920">
 
@@ -110,22 +125,22 @@
       <div id="s2-bg" class="scene clip" data-start="4.9" data-duration="3.2" data-track-index="1"
            style="background: var(--cream); z-index:2;">
         <div class="center-col">
-          <img id="s2-logo" class="logo-img" src="./assets/logo.svg" crossorigin="anonymous" alt="logo Révision Manip Radio" />
+          <div id="s2-logo-mount" class="logo-img"></div>
           <div id="s2-word" class="serif wordmark" style="margin-top:30px;">Révision Manip Radio</div>
           <div id="s2-tag" class="tagline">Et si réviser devenait enfin facile&nbsp;?</div>
         </div>
       </div>
 
-      <!-- ============ BLOC DÉMO (phone + clip continu) 7.5–27.2s ============ -->
-      <div id="demo-bg" class="scene clip" data-start="7.5" data-duration="19.7" data-track-index="2"
+      <!-- ============ BLOC DÉMO (phone + clip continu) 7.5–27.3s ============ -->
+      <div id="demo-bg" class="scene clip" data-start="7.5" data-duration="19.9" data-track-index="2"
            style="background: var(--cream); z-index:3;"></div>
-      <div id="phone-bezel" class="clip" data-start="7.6" data-duration="19.5" data-track-index="3" style="z-index:4;"></div>
+      <div id="phone-bezel" class="clip" data-start="7.6" data-duration="19.7" data-track-index="3" style="z-index:4;"></div>
 
-      <!-- clip continu (un seul élément, muted playsinline) ; l'audio est la piste master séparée -->
-      <video id="vid" class="app-video clip" data-start="7.6" data-duration="19.4" data-media-start="0"
-             data-track-index="5" src="./assets/demo_raw.mp4" muted playsinline style="z-index:5;"></video>
+      <!-- clip continu (keyframes denses), muted playsinline ; audio = piste master séparée -->
+      <video id="vid" class="app-video clip" data-start="7.6" data-duration="19.7" data-media-start="0"
+             data-track-index="5" src="./assets/demo_dense.mp4" muted playsinline style="z-index:5;"></video>
 
-      <div id="phone-notch" class="clip" data-start="7.6" data-duration="19.5" data-track-index="6" style="z-index:6;"></div>
+      <div id="island-mask" class="clip" data-start="7.6" data-duration="19.7" data-track-index="6" style="z-index:6;"></div>
 
       <!-- légendes (lower-third), une par ligne de voix off -->
       <div id="capA" class="caption clip" data-start="7.76" data-duration="8.2" data-track-index="7" style="z-index:7;">
@@ -141,15 +156,40 @@
         <p>Réviser au bon moment, grâce à la répétition espacée.</p>
       </div>
 
-      <!-- ============ SCÈNE 6 — CATALOGUE (27.0–34.3s) ============ -->
-      <div id="s6-bg" class="scene clip" data-start="27.0" data-duration="7.3" data-track-index="0"
+      <!-- ============ SCÈNE 6 — CATALOGUE (27.1–34.3s) ============ -->
+      <div id="s6-bg" class="scene clip" data-start="27.1" data-duration="7.2" data-track-index="0"
            style="background: var(--cream); z-index:8;">
         <div class="center-col">
           <div id="s6-title" class="serif cat-title">Tout pour réviser</div>
           <div class="chips">
-            <div class="chip s6-chip"><div class="ico">🗂️</div><div class="lbl">Des milliers de flashcards</div></div>
-            <div class="chip s6-chip"><div class="ico">✅</div><div class="lbl">Des QCM par chapitre</div></div>
-            <div class="chip s6-chip"><div class="ico">📄</div><div class="lbl">Des fiches de synthèse</div></div>
+            <div class="chip s6-chip">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F4EEE5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="7" width="13" height="14" rx="2.5"/>
+                  <path d="M8 4.5h9.5A2.5 2.5 0 0 1 20 7v11"/>
+                </svg>
+              </div>
+              <div class="txt"><div class="t">Flashcards</div><div class="s">Des milliers de cartes</div></div>
+            </div>
+            <div class="chip s6-chip">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F4EEE5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 6.5l1.7 1.7L9 4.8"/><path d="M12 6.5h8"/>
+                  <path d="M4 13.5l1.7 1.7L9 11.8"/><path d="M12 13.5h8"/>
+                  <path d="M4 20.2l1.7 1.7L9 18.5"/><path d="M12 20.2h8"/>
+                </svg>
+              </div>
+              <div class="txt"><div class="t">QCM</div><div class="s">Pour t'auto-tester par chapitre</div></div>
+            </div>
+            <div class="chip s6-chip">
+              <div class="ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#F4EEE5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 3h7l5 5v13a0 0 0 0 1 0 0H6a0 0 0 0 1 0 0V3z"/>
+                  <path d="M13 3v5h5"/><path d="M9 13h6"/><path d="M9 17h6"/>
+                </svg>
+              </div>
+              <div class="txt"><div class="t">Fiches de synthèse</div><div class="s">L'essentiel à retenir</div></div>
+            </div>
           </div>
         </div>
       </div>
@@ -158,8 +198,8 @@
       <div id="s7-bg" class="scene clip" data-start="33.9" data-duration="3.4" data-track-index="1"
            style="background: var(--teal); z-index:9;">
         <div class="center-col">
-          <div id="s7-l1" class="serif sig-line">Pensé par un <span class="em">manip radio</span>,</div>
-          <div id="s7-l2" class="serif sig-line">pour les <span class="em">manips radio</span>.</div>
+          <div id="s7-l1" class="serif sig-line">Pensé par un <span class="em">manip&nbsp;radio</span>,</div>
+          <div id="s7-l2" class="serif sig-line">pour les <span class="em">manips&nbsp;radio</span>.</div>
         </div>
       </div>
 
@@ -167,11 +207,26 @@
       <div id="s8-bg" class="scene clip" data-start="37.0" data-duration="5.0" data-track-index="2"
            style="background: var(--cream); z-index:10;">
         <div class="center-col">
-          <img id="s8-logo" class="logo-img small" src="./assets/logo.svg?ctx=cta" crossorigin="anonymous" alt="logo Révision Manip Radio" />
+          <div id="s8-logo-mount" class="logo-img small"></div>
           <div id="s8-name" class="serif cta-name">Révision Manip Radio</div>
           <div class="stores">
-            <div class="store s8-store"> App Store</div>
-            <div class="store s8-store">▶ Play Store</div>
+            <!-- Badge App Store -->
+            <div class="store s8-store">
+              <svg class="store-logo" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
+                <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.04.28.04.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.643 0 2.935.06 4.437 2.22-.115.07-2.55 1.49-2.55 4.49 0 3.45 3.04 4.69 3.063 4.7z"/>
+              </svg>
+              <div class="store-txt"><span class="t1">Télécharger dans l'</span><span class="t2">App Store</span></div>
+            </div>
+            <!-- Badge Google Play -->
+            <div class="store s8-store">
+              <svg class="store-logo" viewBox="0 0 56 60" aria-hidden="true">
+                <polygon points="4,3.5 4,30 33,19.5 33,30" fill="#34A853"/>
+                <polygon points="4,30 33,30 33,40.5 4,56.5" fill="#4285F4"/>
+                <polygon points="33,19.5 52,30 33,30" fill="#EA4335"/>
+                <polygon points="33,30 52,30 33,40.5" fill="#FBBC04"/>
+              </svg>
+              <div class="store-txt"><span class="t1">Disponible sur</span><span class="t2">Google Play</span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -182,6 +237,8 @@
 
     </div>
 
+    <!-- Art du logo (privé, gitignoré) injecté en DOM → cartes animables au GSAP -->
+    <script src="./assets/logo-inline.js"></script>
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
@@ -191,17 +248,18 @@
       tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.4);
       tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 2.6);
 
-      // ---- Scène 2 : logo (voix : 4.94s « Et si… ») ----
-      tl.from("#s2-bg",   { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 4.9);
-      // entrée « éventail qui s'ouvre » : pile serrée + pivotée → déploiement avec dépassement
-      tl.from("#s2-logo", { scale: 0.55, rotation: -12, transformOrigin: "50% 85%", opacity: 0, duration: 0.9, ease: "back.out(1.7)" }, 5.0);
-      tl.from("#s2-word", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 5.4);
-      tl.from("#s2-tag",  { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 5.7);
+      // ---- Scène 2 : logo — VRAI fan-opening carte par carte ----
+      tl.from("#s2-bg",        { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 4.9);
+      tl.from("#s2-logo-mount",{ scale: 0.78, opacity: 0, transformOrigin: "50% 82%", duration: 0.6, ease: "power2.out" }, 5.0);
+      // chaque carte part « fermée » (rotation 0, x 0) → se déploie vers sa pose ouverte
+      tl.from(".s2logo-card",  { rotation: 0, x: 0, svgOrigin: "512 935", duration: 0.75, stagger: 0.11, ease: "back.out(1.7)" }, 5.05);
+      tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 5.7);
+      tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.0);
 
-      // ---- Bloc démo : le téléphone monte (voix : 7.76s) ----
+      // ---- Bloc démo : téléphone + vidéo + île entrent ENSEMBLE (plus de décalage) ----
       tl.from("#demo-bg",     { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 7.5);
-      tl.from("#phone-bezel", { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 7.6);
-      tl.from("#phone-notch", { opacity: 0, duration: 0.4 }, 7.9);
+      tl.from(["#phone-bezel", "#vid", "#island-mask"],
+              { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 7.6);
 
       // légendes : fondu d'entrée + fondu de sortie (style sous-titres)
       function caption(id, tin, tout) {
@@ -210,23 +268,28 @@
       }
       caption("#capA", 7.76, 15.7);
       caption("#capB", 16.83, 21.1);
-      caption("#capC", 22.01, 26.5);
+      caption("#capC", 22.01, 26.3);
+
+      // ---- Sortie douce du téléphone (glissé + fondu) avant le catalogue ----
+      tl.to(["#phone-bezel", "#vid", "#island-mask"],
+            { y: 90, opacity: 0, duration: 0.7, ease: "power2.inOut" }, 26.5);
 
       // ---- Scène 6 : catalogue (voix : 27.16s) ----
-      tl.from("#s6-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 27.0);
-      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 27.3);
-      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 27.7);
+      tl.from("#s6-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 27.1);
+      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 27.4);
+      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 27.8);
 
       // ---- Scène 7 : signature (voix : 34.14s) ----
       tl.from("#s7-bg", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 33.9);
       tl.from("#s7-l1", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.2);
       tl.from("#s7-l2", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.6);
 
-      // ---- Scène 8 : CTA (voix : 37.10s) ----
-      tl.from("#s8-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 37.0);
-      tl.from("#s8-logo",  { scale: 0.8, opacity: 0, duration: 0.6, ease: "back.out(1.4)" }, 37.2);
-      tl.from("#s8-name",  { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 37.6);
-      tl.from(".s8-store", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 38.0);
+      // ---- Scène 8 : CTA — logo fan-opening (rappel) + badges ----
+      tl.from("#s8-bg",        { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 37.0);
+      tl.from("#s8-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 37.2);
+      tl.from(".s8logo-card",  { rotation: 0, x: 0, svgOrigin: "512 935", duration: 0.6, stagger: 0.09, ease: "back.out(1.6)" }, 37.25);
+      tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 37.7);
+      tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 38.0);
 
       window.__timelines["main"] = tl;
     </script>
