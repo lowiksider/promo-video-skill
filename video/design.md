@@ -1,41 +1,49 @@
 # Design — Révision Manip Radio (promo verticale)
 
 > Charte pour la vidéo promo HyperFrames. Source de vérité de la marque.
-> ⚠️ Couleurs et logo à CONFIRMER par Lowik (valeurs ci-dessous = défauts iOS-clair en attendant les vrais hex de `app_colors.dart`).
+> ✅ Palette mise à jour le 02/06/2026 à partir des couleurs réelles relevées dans la vidéo de démo (`video/assets/demo_raw.mp4`).
 
 ## Mood
-Clair, épuré, moderne, rassurant. Inspiration iOS / app Rappels Apple.
-Énergie « étudiant motivé » : dynamique mais pas agressif. Crédibilité médicale.
+Calme, éditorial, premium, rassurant. **Pas** iOS bleu standard — identité chaleureuse :
+fond crème + vert pétrole profond + titres en serif. Crédibilité médicale, sérénité.
+Énergie « étudiant motivé » : dynamique mais posé.
 
 ## Format
 - Cible : **Portrait 1080 × 1920** (Reels / TikTok / Stories)
-- Durée : ~30 s
-- Fond clair dominant (pas de dark mode)
+- La vidéo d'app source est en 1180×2556, 60 fps → s'insère dans un mockup iPhone.
+- Durée : ~30-34 s
+- Fond clair (crème) dominant — pas de dark mode.
 
-## Palette (à valider)
+## Palette (réelle, relevée dans l'app)
 | Rôle | Hex | Note |
 |------|-----|------|
-| Fond principal | `#F7F8FA` | Blanc cassé iOS |
-| Surface / tuiles | `#FFFFFF` | Cartes |
-| Texte principal | `#1C1C1E` | Quasi-noir iOS |
-| Texte secondaire | `#6B7280` | Gris |
-| Accent primaire | `#0A84FF` | Bleu iOS — À REMPLACER par la couleur de marque de l'app |
-| Accent succès | `#34C759` | Vert « Acquis » (FSRS) |
-| Alerte / à revoir | `#FF9F0A` | Orange « À revoir » |
-| Non acquis | `#FF3B30` | Rouge « Non acquis » |
-| Premium / couronne | `#FFB300` | Or couronne |
+| Fond crème (clair) | `#F4EEE5` | Fond principal de l'app |
+| Fond crème (mid) | `#EEE8DE` | Variante |
+| Surface greige / tuiles | `#DED8CF` | Tuiles secondaires (Récap, QCM) |
+| Carte blanche | `#FFFFFF` | Cartes de flashcard |
+| **Vert pétrole (primaire)** | `#153239` | Boutons, barre de nav active, accents forts |
+| Texte principal | `#141515` | Quasi-noir |
+| Texte secondaire | `#76706D` | Gris chaud |
+| Chip « Réponse » (sauge) | `#E2ECEA` | fond, texte vert foncé |
+| Non acquis | bg `#EDDBD2` / texte terracotta `#B5524A` | Bouton rouge doux |
+| À revoir | bg `#F1E3CF` / texte ambre `#C08A3E` | Bouton orange doux |
+| Acquis | bg `#DDE0D4` / texte vert `#4E7A5F` | Bouton vert doux |
 
 ## Typographie
-- **Titres** : Poppins (SemiBold / Bold)
-- **Corps** : Inter (Regular / Medium)
-- Repli si non embarquées : sans-serif géométrique proche.
+- **Titres** : **serif** type **Lora** (confirmé : l'app utilise Lora). Gras pour les gros titres.
+- **Corps** : sans-serif (proche Inter / système).
+- Les plans animés doivent reprendre Lora en titres pour matcher l'app.
 
 ## Formes
-- Coins arrondis généreux (tuiles ~20px, boutons pill-shaped)
-- Glassmorphism léger, ombres douces (pas d'ombres dures)
+- Coins arrondis généreux (tuiles ~20px, **boutons pill** très arrondis).
+- Aplats doux, ombres légères. Pas d'ombres dures, pas de glassmorphism marqué.
 
 ## À NE PAS faire
-- Pas de dark mode
-- Pas de jargon médical illisible à l'écran (rester lisible en 3 s)
-- Pas de promesse médicale (app éducative, pas un dispositif médical)
-- Pas de texte plus petit que 28px à l'écran en portrait
+- Pas de dark mode, pas de bleu iOS générique.
+- Pas de jargon médical illisible à l'écran (rester lisible en 3 s).
+- Pas de promesse médicale (app éducative, pas un dispositif médical).
+- Pas de texte plus petit que 28px à l'écran en portrait.
+- Ne pas trahir l'aesthetic crème/serif : les scènes animées doivent s'y fondre.
+
+## Logo
+- ⏳ En attente : le logo n'est pas encore arrivé (upload à refaire). Le déposer → `video/assets/logo.png`.
