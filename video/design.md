@@ -1,4 +1,4 @@
-# Design — Fiche Manip Radio (promo verticale)
+# Design — Révision Manip Radio (promo verticale)
 
 > Charte pour la vidéo promo HyperFrames. Source de vérité de la marque.
 > ⚠️ Couleurs et logo à CONFIRMER par Lowik (valeurs ci-dessous = défauts iOS-clair en attendant les vrais hex de `app_colors.dart`).
