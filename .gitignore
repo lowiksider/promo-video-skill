@@ -1,2 +1,31 @@
 node_modules/
 voice-tests/
+
+# === Confidentialité : ne JAMAIS pousser de médias sur ce fork public ===
+# Vidéos / enregistrements d'app (sources et rendus)
+*.mov
+*.mp4
+*.m4v
+*.webm
+*.gif
+
+# Audio (voix off générée, musiques de travail)
+*.mp3
+*.wav
+*.aac
+*.m4a
+
+# Tout le dossier d'assets de l'app (logo, captures, clips)
+video/assets/
+
+# Secrets / clés (par sécurité — ne devraient jamais être en fichier de toute façon)
+.env
+.env.*
+*.key
+secrets*
+
+# Sorties de rendu HyperFrames
+out/
+output/
+renders/
+*.out.mp4
