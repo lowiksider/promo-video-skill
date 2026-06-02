@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=1080, height=1920" />
-    <!-- GSAP vendorisé en local (pas de dépendance CDN jsdelivr au rendu) -->
     <script src="./vendor/gsap.min.js"></script>
     <style>
       @font-face { font-family: 'Lora'; font-style: normal; font-weight: 600; font-display: block; src: url('./fonts/lora-600.ttf') format('truetype'); }
@@ -15,17 +14,10 @@
         font-family: 'Inter', system-ui, sans-serif;
       }
 
-      /* ===================== TOKENS (charte réelle de l'app) ===================== */
       :root {
-        --cream: #F4EEE5;
-        --cream-2: #EEE8DE;
-        --greige: #DED8CF;
-        --teal: #153239;       /* primaire vert pétrole */
-        --teal-2: #1B4F60;
-        --green: #3D8260;
-        --gold: #B89643;
-        --ink: #141515;
-        --muted: #6B6560;
+        --cream: #F4EEE5; --cream-2: #EEE8DE; --greige: #DED8CF;
+        --teal: #153239; --teal-2: #1B4F60; --green: #3D8260; --gold: #B89643;
+        --ink: #141515; --muted: #6B6560;
       }
       .scene { position: absolute; inset: 0; width: 1080px; height: 1920px; }
       .serif { font-family: 'Lora', serif; }
@@ -47,8 +39,6 @@
         border-radius: 60px; object-fit: cover; object-position: top center;
         background: #F4EEE5;
       }
-      /* Pastille noire calée sur la Dynamic Island réelle de la footage → masque
-         le point rouge d'enregistrement (taille/position ajustées sur l'île). */
       #island-mask {
         position: absolute; left: 423px; top: 332px; width: 217px; height: 55px;
         background: #0A0A0B; border-radius: 28px;
@@ -58,7 +48,7 @@
       .hook-line { font-size: 100px; line-height: 1.04; color: var(--cream); font-weight: 600; }
       .hook-line.dim { color: rgba(247,245,237,0.62); font-size: 66px; }
       #s1-l1 { margin-bottom: 8px; }
-      #s1-l2 { margin-bottom: 64px; }   /* aère les 3 lignes (on a la place) */
+      #s1-l2 { margin-bottom: 64px; }
 
       .wordmark { font-size: 78px; color: var(--teal); font-weight: 700; letter-spacing: -1px; }
       .tagline { font-size: 40px; color: var(--muted); margin-top: 18px; }
@@ -80,16 +70,12 @@
       }
       .chip .ico {
         width: 92px; height: 92px; border-radius: 24px; flex: 0 0 auto;
-        display: flex; align-items: center; justify-content: center;
-        background: var(--teal);
+        display: flex; align-items: center; justify-content: center; background: var(--teal);
       }
       .chip .ico svg { width: 50px; height: 50px; }
       .chip .txt { display: flex; flex-direction: column; align-items: flex-start; }
       .chip .t { font-size: 44px; color: var(--ink); font-weight: 700; line-height: 1.05; }
       .chip .s { font-size: 29px; color: var(--muted); font-weight: 500; margin-top: 6px; }
-
-      .sig-line { font-size: 66px; color: var(--cream); font-weight: 600; line-height: 1.18; }
-      .sig-line .em { color: #E3C271; }  /* doré éclairci → contraste ≥3:1 sur le pétrole */
 
       .cta-name { font-size: 70px; color: var(--teal); font-weight: 700; margin-top: 30px; }
       .stores { display: flex; gap: 28px; margin-top: 52px; }
@@ -105,12 +91,12 @@
     </style>
   </head>
   <body>
-    <!-- Durée = 42s (validation visuelle ; recalée sur la voix off au render final). -->
+    <!-- Durée = 38s, calée sur la voix off (voix 2, Eleven v3). Signature coupée. -->
     <div id="root" data-composition-id="main"
-         data-start="0" data-duration="42" data-width="1080" data-height="1920">
+         data-start="0" data-duration="38" data-width="1080" data-height="1920">
 
-      <!-- ============ SCÈNE 1 — HOOK (0–5.4s) ============ -->
-      <div id="s1-bg" class="scene clip" data-start="0" data-duration="5.4" data-track-index="0"
+      <!-- ============ SCÈNE 1 — HOOK (0–6.4s) ============ -->
+      <div id="s1-bg" class="scene clip" data-start="0" data-duration="6.4" data-track-index="0"
            style="background: var(--teal); z-index:1;">
         <div class="center-col">
           <div id="s1-l1" class="serif hook-line">59 UE.</div>
@@ -119,8 +105,8 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 2 — LOGO / BASCULE (4.9–8.1s) ============ -->
-      <div id="s2-bg" class="scene clip" data-start="4.9" data-duration="3.2" data-track-index="1"
+      <!-- ============ SCÈNE 2 — LOGO / BASCULE (5.9–9.4s) ============ -->
+      <div id="s2-bg" class="scene clip" data-start="5.9" data-duration="3.5" data-track-index="1"
            style="background: var(--cream); z-index:2;">
         <div class="center-col">
           <div id="s2-logo-mount" class="logo-img"></div>
@@ -129,33 +115,30 @@
         </div>
       </div>
 
-      <!-- ============ BLOC DÉMO (phone + clip continu) 7.5–27.3s ============ -->
-      <div id="demo-bg" class="scene clip" data-start="7.5" data-duration="19.9" data-track-index="2"
+      <!-- ============ BLOC DÉMO (phone + clip continu) 8.9–26.3s ============ -->
+      <div id="demo-bg" class="scene clip" data-start="8.9" data-duration="17.4" data-track-index="2"
            style="background: var(--cream); z-index:3;"></div>
-      <div id="phone-bezel" class="clip" data-start="7.6" data-duration="19.7" data-track-index="3" style="z-index:4;"></div>
-
-      <!-- clip continu (keyframes denses), muted playsinline ; audio = piste master séparée -->
-      <video id="vid" class="app-video clip" data-start="7.6" data-duration="19.7" data-media-start="0"
+      <div id="phone-bezel" class="clip" data-start="9.0" data-duration="17.1" data-track-index="3" style="z-index:4;"></div>
+      <video id="vid" class="app-video clip" data-start="9.0" data-duration="17.1" data-media-start="0"
              data-track-index="5" src="./assets/demo_dense.mp4" muted playsinline style="z-index:5;"></video>
-
-      <div id="island-mask" class="clip" data-start="7.6" data-duration="19.7" data-track-index="6" style="z-index:6;"></div>
+      <div id="island-mask" class="clip" data-start="9.0" data-duration="17.1" data-track-index="6" style="z-index:6;"></div>
 
       <!-- légendes (lower-third), une par ligne de voix off -->
-      <div id="capA" class="caption clip" data-start="7.76" data-duration="8.2" data-track-index="7" style="z-index:7;">
+      <div id="capA" class="caption clip" data-start="9.12" data-duration="7.7" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Tout le programme dans ta poche. Choisis ton chapitre, lance ta session.</p>
       </div>
-      <div id="capB" class="caption clip" data-start="16.83" data-duration="4.7" data-track-index="7" style="z-index:7;">
+      <div id="capB" class="caption clip" data-start="17.52" data-duration="3.5" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Des flashcards intelligentes — et tu t'auto-évalues d'un geste.</p>
       </div>
-      <div id="capC" class="caption clip" data-start="22.01" data-duration="4.9" data-track-index="7" style="z-index:7;">
+      <div id="capC" class="caption clip" data-start="21.71" data-duration="3.9" data-track-index="7" style="z-index:7;">
         <div class="accent"></div>
         <p>Réviser au bon moment, grâce à la répétition espacée.</p>
       </div>
 
-      <!-- ============ SCÈNE 6 — CATALOGUE (27.1–34.3s) ============ -->
-      <div id="s6-bg" class="scene clip" data-start="27.1" data-duration="7.2" data-track-index="0"
+      <!-- ============ SCÈNE 6 — CATALOGUE (26.0–32.6s) ============ -->
+      <div id="s6-bg" class="scene clip" data-start="26.0" data-duration="6.6" data-track-index="0"
            style="background: var(--cream); z-index:8;">
         <div class="center-col">
           <div id="s6-title" class="serif cat-title">Tout pour réviser</div>
@@ -192,30 +175,19 @@
         </div>
       </div>
 
-      <!-- ============ SCÈNE 7 — SIGNATURE (33.9–37.3s) ============ -->
-      <div id="s7-bg" class="scene clip" data-start="33.9" data-duration="3.4" data-track-index="1"
-           style="background: var(--teal); z-index:9;">
-        <div class="center-col">
-          <div id="s7-l1" class="serif sig-line">Pensé par un <span class="em">manip&nbsp;radio</span>,</div>
-          <div id="s7-l2" class="serif sig-line">pour les <span class="em">manips&nbsp;radio</span>.</div>
-        </div>
-      </div>
-
-      <!-- ============ SCÈNE 8 — CTA (37.0–42s) ============ -->
-      <div id="s8-bg" class="scene clip" data-start="37.0" data-duration="5.0" data-track-index="2"
+      <!-- ============ SCÈNE 8 — CTA (32.6–38s) ============ -->
+      <div id="s8-bg" class="scene clip" data-start="32.6" data-duration="5.4" data-track-index="1"
            style="background: var(--cream); z-index:10;">
         <div class="center-col">
           <div id="s8-logo-mount" class="logo-img small"></div>
           <div id="s8-name" class="serif cta-name">Révision Manip Radio</div>
           <div class="stores">
-            <!-- Badge App Store -->
             <div class="store s8-store">
               <svg class="store-logo" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
                 <path d="M16.365 1.43c0 1.14-.493 2.27-1.177 3.08-.744.9-1.99 1.57-2.987 1.57-.12 0-.23-.02-.3-.03-.01-.06-.04-.22-.04-.39 0-1.15.572-2.27 1.206-2.98.804-.94 2.142-1.64 3.248-1.68.03.13.04.28.04.43zm4.565 15.71c-.03.07-.463 1.58-1.518 3.12-.945 1.34-1.94 2.71-3.43 2.71-1.517 0-1.9-.88-3.63-.88-1.698 0-2.302.91-3.67.91-1.377 0-2.332-1.26-3.428-2.8-1.287-1.82-2.323-4.63-2.323-7.28 0-4.28 2.797-6.55 5.552-6.55 1.448 0 2.675.95 3.6.95.865 0 2.222-1.01 3.902-1.01.643 0 2.935.06 4.437 2.22-.115.07-2.55 1.49-2.55 4.49 0 3.45 3.04 4.69 3.063 4.7z"/>
               </svg>
               <span class="store-lbl">App Store</span>
             </div>
-            <!-- Badge Google Play (triangle 4 couleurs) -->
             <div class="store s8-store">
               <svg class="store-logo" viewBox="0 0 50 56" aria-hidden="true">
                 <polygon points="6,4 30,18.4 30,28 6,28" fill="#00C566"/>
@@ -230,7 +202,7 @@
       </div>
 
       <!-- ============ PISTE AUDIO MASTER (voix off + musique duckée) ============ -->
-      <audio id="master-audio" class="clip" data-start="0" data-duration="42" data-track-index="11"
+      <audio id="master-audio" class="clip" data-start="0" data-duration="38" data-track-index="11"
              src="./assets/master_audio.mp3" data-volume="1"></audio>
 
     </div>
@@ -240,54 +212,49 @@
     <script>
       window.__timelines = window.__timelines || {};
       const tl = gsap.timeline({ paused: true });
+      const CLOSED = window.__logoClosed || { rotation: 10, x: 44.316, y: 7.814 };
 
-      // ---- Scène 1 : hook (voix : 0.6s) ----
-      tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.6);
-      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.4);
-      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 2.6);
+      // ---- Scène 1 : hook ----
+      tl.from("#s1-l1", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 0.7);
+      tl.from("#s1-l2", { y: 60, opacity: 0, duration: 0.7, ease: "power3.out" }, 1.8);
+      tl.from("#s1-l3", { y: 40, opacity: 0, duration: 0.8, ease: "power2.out" }, 3.3);
 
-      // ---- Scène 2 : logo — VRAI fan-opening carte par carte ----
-      tl.from("#s2-bg",        { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 4.9);
-      tl.from("#s2-logo-mount",{ scale: 0.78, opacity: 0, transformOrigin: "50% 82%", duration: 0.6, ease: "power2.out" }, 5.0);
-      // chaque carte part « fermée » (rotation 0, x 0) → se déploie vers sa pose ouverte
-      tl.from(".s2logo-card",  { rotation: 0, x: 0, svgOrigin: "512 935", duration: 0.75, stagger: 0.11, ease: "back.out(1.7)" }, 5.05);
-      tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 5.7);
-      tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 6.0);
+      // ---- Scène 2 : logo — fan-opening (empilées → pose P1) ----
+      tl.from("#s2-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 5.9);
+      tl.from("#s2-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.55, ease: "power2.out" }, 6.0);
+      // chaque carte part de la pose « avant » (empilées) → s'ouvre vers sa pose P1
+      tl.from(".s2logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.8, stagger: 0.12, ease: "back.out(1.5)" }, 6.05);
+      tl.from("#s2-word",      { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 6.7);
+      tl.from("#s2-tag",       { y: 26, opacity: 0, duration: 0.6, ease: "power2.out" }, 7.0);
 
-      // ---- Bloc démo : téléphone + vidéo + île entrent ENSEMBLE (plus de décalage) ----
-      tl.from("#demo-bg",     { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 7.5);
+      // ---- Bloc démo : téléphone + vidéo + île entrent ENSEMBLE ----
+      tl.from("#demo-bg", { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 8.9);
       tl.from(["#phone-bezel", "#vid", "#island-mask"],
-              { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 7.6);
+              { y: 120, opacity: 0, duration: 0.8, ease: "power3.out" }, 9.0);
 
-      // légendes : fondu d'entrée + fondu de sortie (style sous-titres)
       function caption(id, tin, tout) {
         tl.from(id, { y: 30, opacity: 0, duration: 0.5, ease: "power2.out" }, tin);
         tl.to(id,   { opacity: 0, duration: 0.4, ease: "power1.in" }, tout);
       }
-      caption("#capA", 7.76, 15.7);
-      caption("#capB", 16.83, 21.1);
-      caption("#capC", 22.01, 26.3);
+      caption("#capA", 9.12, 16.8);
+      caption("#capB", 17.52, 20.9);
+      caption("#capC", 21.71, 25.4);
 
-      // ---- Sortie douce du téléphone (glissé + fondu) avant le catalogue ----
+      // ---- Sortie douce du téléphone avant le catalogue ----
       tl.to(["#phone-bezel", "#vid", "#island-mask"],
-            { y: 90, opacity: 0, duration: 0.7, ease: "power2.inOut" }, 26.5);
+            { y: 90, opacity: 0, duration: 0.7, ease: "power2.inOut" }, 25.3);
 
-      // ---- Scène 6 : catalogue (voix : 27.16s) ----
-      tl.from("#s6-bg",    { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 27.1);
-      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 27.4);
-      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 27.8);
-
-      // ---- Scène 7 : signature (voix : 34.14s) ----
-      tl.from("#s7-bg", { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 33.9);
-      tl.from("#s7-l1", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.2);
-      tl.from("#s7-l2", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 34.6);
+      // ---- Scène 6 : catalogue ----
+      tl.from("#s6-bg",    { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 26.0);
+      tl.from("#s6-title", { y: 40, opacity: 0, duration: 0.6, ease: "power3.out" }, 26.3);
+      tl.from(".s6-chip",  { x: -50, opacity: 0, duration: 0.55, ease: "expo.out", stagger: 0.5 }, 26.7);
 
       // ---- Scène 8 : CTA — logo fan-opening (rappel) + badges ----
-      tl.from("#s8-bg",        { opacity: 0, duration: 0.6, ease: "power1.inOut" }, 37.0);
-      tl.from("#s8-logo-mount",{ scale: 0.82, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 37.2);
-      tl.from(".s8logo-card",  { rotation: 0, x: 0, svgOrigin: "512 935", duration: 0.6, stagger: 0.09, ease: "back.out(1.6)" }, 37.25);
-      tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 37.7);
-      tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 38.0);
+      tl.from("#s8-bg",        { opacity: 0, duration: 0.55, ease: "power1.inOut" }, 32.6);
+      tl.from("#s8-logo-mount",{ scale: 0.85, opacity: 0, transformOrigin: "50% 82%", duration: 0.5, ease: "power2.out" }, 32.75);
+      tl.from(".s8logo-card",  { rotation: CLOSED.rotation, x: CLOSED.x, y: CLOSED.y, svgOrigin: "512 935", duration: 0.65, stagger: 0.1, ease: "back.out(1.4)" }, 32.8);
+      tl.from("#s8-name",      { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 33.3);
+      tl.from(".s8-store",     { y: 24, opacity: 0, duration: 0.5, ease: "power2.out", stagger: 0.14 }, 33.6);
 
       window.__timelines["main"] = tl;
     </script>
